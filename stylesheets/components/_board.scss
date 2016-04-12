@@ -1,0 +1,8 @@
+.board {
+  text-align: center;
+
+  .board-tiles {
+    max-width: $tile-width * 6;
+    display: inline-block;
+  }
+}

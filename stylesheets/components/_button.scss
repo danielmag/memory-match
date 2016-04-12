@@ -1,0 +1,18 @@
+.button {
+  @include default-button;
+  position: relative;
+
+  &-loading {
+    color: $green;
+
+    &:before {
+      content: 'Loading...';
+      position: absolute;
+      color: white;
+    }
+  }
+
+  &-hidden {
+    display: none;
+  }
+}

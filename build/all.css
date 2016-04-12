@@ -1,0 +1,75 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857;
+  background-color: #333;
+  color: white; }
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box; }
+
+img {
+  max-width: 100%; }
+
+.game {
+  text-align: center; }
+
+.board {
+  text-align: center; }
+  .board .board-tiles {
+    max-width: 36rem;
+    display: inline-block; }
+
+.tile {
+  padding: 0;
+  border: 0;
+  background: none;
+  display: inline-block;
+  vertical-align: middle;
+  width: 6rem;
+  height: 6rem;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d; }
+
+.tile-flipped {
+  -webkit-transform: rotateY(0);
+          transform: rotateY(0); }
+
+.tile-face {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden; }
+
+.tile-back-face {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg); }
+
+#tile-template {
+  display: none; }
+
+.button {
+  border: 0;
+  padding: 5px 15px;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #7cb842;
+  color: #fff;
+  position: relative; }
+  .button-loading {
+    color: #7cb842; }
+    .button-loading:before {
+      content: 'Loading...';
+      position: absolute;
+      color: white; }
+  .button-hidden {
+    display: none; }

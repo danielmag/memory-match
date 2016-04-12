@@ -1,0 +1,16 @@
+{
+  "name": "memory-match",
+  "version": "1.0.0",
+  "description": "A classic memory match game",
+  "main": "gulpfile.js",
+  "author": "danielm",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-csso": "^1.1.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.3"
+  }
+}

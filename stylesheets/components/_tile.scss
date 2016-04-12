@@ -1,0 +1,31 @@
+.tile {
+  @include remove-button-styles;
+
+  display: inline-block;
+  vertical-align: middle;
+  width: $tile-width;
+  height: $tile-width;
+  transform: rotateY(180deg);
+  transition: transform 0.3s linear;
+  transform-style: preserve-3d;
+}
+
+.tile-flipped {
+  transform: rotateY(0);
+}
+
+.tile-face {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.tile-back-face {
+  transform: rotateY(180deg);
+}
+
+#tile-template {
+  display: none;
+}
