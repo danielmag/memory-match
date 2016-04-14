@@ -1,15 +1,19 @@
 var ClassUtils = (function() {
   'use strict';
 
-  var classRegex = function (className) {
+  var classRegex = function(className) {
     return new RegExp('[ ]*\\b' + className + '\\b', 'g');
   };
+
+  var toArray = function(el) {
+    return el instanceof Array ? el : [el]
+  }
 
   var classUtils = {};
 
   classUtils.hasClass = function(els, className) {
     var regex = classRegex(className);
-    var hasClassArray = els.map(function(el) {
+    var hasClassArray = toArray(els).map(function(el) {
       if (el.className.match(regex)) {
         return true;
       }
@@ -24,7 +28,7 @@ var ClassUtils = (function() {
 
   classUtils.addClass = function(els, className) {
     var regex = classRegex(className);
-    els.forEach(function(el) {
+    toArray(els).forEach(function(el) {
       if (!el.className.match(regex)) {
         el.className += ' ' + className;
       }
@@ -34,7 +38,7 @@ var ClassUtils = (function() {
 
   classUtils.removeClass = function(els, className) {
     var regex = classRegex(className);
-    els.forEach(function(el) {
+    toArray(els).forEach(function(el) {
       el.className = el.className.replace(regex, '');
     });
     return els;
@@ -232,7 +236,7 @@ function createBoard(data) {
       twitterShare = document.getElementById('twitter-share'),
       shareLinkMessage = 'Memory JavaScript FTW em: ';
 
-  ClassUtils.addClass([newGameButton], 'default-button-hidden');
+  ClassUtils.addClass(newGameButton, 'default-button-hidden');
 
   var initTimer = function() {
     var timer = new Timer(function(time) {
@@ -246,7 +250,7 @@ function createBoard(data) {
     return new Board(9, function() {
       var time = TimeUtils.millisToMmAndSs(timer.stop());
       twitterShare.href += encodeURIComponent(shareLinkMessage + time);
-      ClassUtils.addClass([gameEndScreen], 'game-end-visible');
+      ClassUtils.addClass(gameEndScreen, 'game-end-visible');
     });
   }
 
@@ -281,11 +285,11 @@ function createBoard(data) {
 
   var setTileCallbacks = function(tile, domTile) {
     tile.setOnUncover(function() {
-      ClassUtils.addClass([domTile], 'tile-flipped');
+      ClassUtils.addClass(domTile, 'tile-flipped');
     });
     tile.setOnCover(function() {
       window.setTimeout(function() {
-        ClassUtils.removeClass([domTile], 'tile-flipped');
+        ClassUtils.removeClass(domTile, 'tile-flipped');
       }, 800);
     });
   }
@@ -311,7 +315,7 @@ function createBoard(data) {
   newGameButton.addEventListener('click', function() {
     if (!called) {
       ScriptUtils.addScript('https://services.sapo.pt/Codebits/listbadges?callback=createBoard');
-      ClassUtils.addClass([newGameButton], 'default-button-loading');
+      ClassUtils.addClass(newGameButton, 'default-button-loading');
       called = true;
     }
   });
