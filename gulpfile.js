@@ -19,10 +19,12 @@ var jsFiles = [
   'select_utils.js',
   'script_utils.js',
   'array_utils.js',
+  'time_utils.js',
 
   // classes
   'board.js',
   'tile.js',
+  'timer.js',
 
   // general
   'create_board.js'

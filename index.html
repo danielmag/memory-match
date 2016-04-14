@@ -1,34 +1,36 @@
 <!doctype html>
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
 
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 
     <title>Memory Match</title>
-    <link rel='stylesheet' type='text/css' href='build/all.css'>
+    <link rel="stylesheet" type="text/css" href="build/all.css">
   </head>
 
   <body>
-    <div class='game'>
-      <h1 class='game-title'>Memory Match</h1>
-      <button class='button' id='new-game' type='button' name='button'>
+    <div class="game">
+      <h1 class="game-title">Memory Match</h1>
+      <h3 id="game-timer"></h3>
+      <button class="default-button" id="new-game" type="button" name="button">
         New Game
       </button>
-      <section class='board'>
-        <div id='tiles' class='board-tiles'></div>
+
+      <section class="board">
+        <div id="tiles" class="board-tiles"></div>
       </section>
 
-      <button id='tile-template' class='tile'>
-        <div class='tile-face tile-front-face'>
+      <button id="tile-template" class="tile">
+        <div class="tile-face tile-front-face">
         </div>
-        <div class='tile-face tile-back-face'>
-          <img src='https://i2.wp.com/codebits.eu/logos/defaultavatar.jpg' alt='back face' />
+        <div class="tile-face tile-back-face">
+          <img src="https://i2.wp.com/codebits.eu/logos/defaultavatar.jpg" alt="back face" />
         </div>
       </button>
     </div>
 
-    <script src='build/all.js'></script>
+    <script src="build/all.js"></script>
   </body>
 </html>

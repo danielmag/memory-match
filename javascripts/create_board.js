@@ -1,13 +1,29 @@
 function createBoard(data) {
   'use strict';
 
-  var newGameButton = document.getElementById('new-game');
-  ClassUtils.addClass([newGameButton]], 'button-hidden');
+  var template = document.getElementById('tile-template'),
+      tilesContainer = document.getElementById('tiles'),
+      gameTimer = document.getElementById('game-timer'),
+      newGameButton = document.getElementById('new-game');
 
-  var uniqueTiles = 9;
-  var board = new Board(uniqueTiles, function() { console.log('game ended!'); });
-  var template = document.getElementById('tile-template');
-  var tilesContainer = document.getElementById('tiles');
+  ClassUtils.addClass([newGameButton], 'default-button-hidden');
+
+  var initTimer = function() {
+    var timer = new Timer(function(time) {
+      gameTimer.innerHTML = TimeUtils.millisToMmAndSs(time);
+    });
+    timer.start();
+    return timer
+  }
+
+  var initBoard = function() {
+    return new Board(9, function() {
+      var time = TimeUtils.millisToMmAndSs(timer.stop());
+    });
+  }
+
+  var timer = initTimer();
+  var board = initBoard();
 
   var applyTemplate = function(template, src, alt) {
     var newTile = template.cloneNode(true);
@@ -67,10 +83,8 @@ function createBoard(data) {
   newGameButton.addEventListener('click', function() {
     if (!called) {
       ScriptUtils.addScript('https://services.sapo.pt/Codebits/listbadges?callback=createBoard');
-      ClassUtils.addClass([newGameButton], 'button-loading');
+      ClassUtils.addClass([newGameButton], 'default-button-loading');
       called = true;
-    } else {
-
     }
   });
 })();
