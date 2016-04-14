@@ -1,8 +1,7 @@
 .tile {
   @include remove-button-styles;
-
-  display: inline-block;
-  vertical-align: middle;
+  @include inline-block-middle;
+  
   width: $tile-width;
   height: $tile-width;
   transform: rotateY(180deg);

@@ -89,6 +89,21 @@ var ArrayUtils = (function() {
   return arrayUtils;
 })();
 
+var TimeUtils = (function() {
+  'use strict';
+
+  var timeUtils = {};
+
+  timeUtils.millisToMmAndSs = function(millis) {
+    var inSeconds = millis / 1000;
+    var minutes = Math.floor(inSeconds / 60);
+    var seconds = Math.floor(inSeconds % 60);
+    return minutes + 'm ' + seconds + 's';
+  }
+
+  return timeUtils;
+})();
+
 function Board(uniqueTiles, onWin) {
   'use strict';
 
@@ -175,15 +190,65 @@ function Tile(number) {
   }
 }).call(Tile.prototype);
 
+function Timer(onTick) {
+  'use strict';
+
+  this._onTick = onTick;
+}
+
+(function() {
+  'use strict';
+
+  var getNewEllapsed = function() {
+    return new Date().getTime() - this._startTime;
+  }
+
+  this.start = function() {
+    this._startTime = new Date().getTime();
+    this._elapsed = 0;
+    var self = this;
+
+    this._timerId = window.setInterval(function() {
+      self._elapsed = getNewEllapsed.call(self);
+      self._onTick(self._elapsed);
+    }, 300);
+  }
+
+  this.stop = function() {
+    clearInterval(this._timerId);
+    self._elapsed = getNewEllapsed.call(this);
+    return self._elapsed;
+  }
+}).call(Timer.prototype);
+
 function createBoard(data) {
   'use strict';
 
-  ClassUtils.addClass([document.getElementById('new-game')], 'button-hidden');
+  var template = document.getElementById('tile-template'),
+      tilesContainer = document.getElementById('tiles'),
+      gameTimer = document.getElementById('game-timer'),
+      gameEndScreen = document.getElementById('game-end'),
+      newGameButton = document.getElementById('new-game');
 
-  var uniqueTiles = 9;
-  var board = new Board(uniqueTiles, function() { console.log('game ended!'); });
-  var template = document.getElementById('tile-template');
-  var tilesContainer = document.getElementById('tiles');
+  ClassUtils.addClass([newGameButton], 'default-button-hidden');
+
+  var initTimer = function() {
+    var timer = new Timer(function(time) {
+      gameTimer.innerHTML = TimeUtils.millisToMmAndSs(time);
+    });
+    timer.start();
+    return timer
+  }
+
+  var initBoard = function() {
+    return new Board(9, function() {
+      var time = TimeUtils.millisToMmAndSs(timer.stop());
+      ClassUtils.addClass([gameEndScreen], 'game-end-visible');
+    });
+  }
+
+  var timer = initTimer();
+  var board = initBoard();
 
   var applyTemplate = function(template, src, alt) {
     var newTile = template.cloneNode(true);
@@ -243,10 +308,8 @@ function createBoard(data) {
   newGameButton.addEventListener('click', function() {
     if (!called) {
       ScriptUtils.addScript('https://services.sapo.pt/Codebits/listbadges?callback=createBoard');
-      ClassUtils.addClass([newGameButton], 'button-loading');
+      ClassUtils.addClass([newGameButton], 'default-button-loading');
       called = true;
-    } else {
-
     }
   });
 })();

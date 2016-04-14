@@ -4,6 +4,7 @@ function createBoard(data) {
   var template = document.getElementById('tile-template'),
       tilesContainer = document.getElementById('tiles'),
       gameTimer = document.getElementById('game-timer'),
+      gameEndScreen = document.getElementById('game-end'),
       newGameButton = document.getElementById('new-game');
 
   ClassUtils.addClass([newGameButton], 'default-button-hidden');
@@ -19,6 +20,7 @@ function createBoard(data) {
   var initBoard = function() {
     return new Board(9, function() {
       var time = TimeUtils.millisToMmAndSs(timer.stop());
+      ClassUtils.addClass([gameEndScreen], 'game-end-visible');
     });
   }
 

@@ -1,4 +1,4 @@
-.button {
+.default-button {
   @include default-button;
   position: relative;
 
@@ -15,4 +15,10 @@
   &-hidden {
     display: none;
   }
+}
+
+.twitter-button {
+  @include base-button;
+
+  background-color: $twitter-blue;
 }

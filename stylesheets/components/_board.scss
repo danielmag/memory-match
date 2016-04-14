@@ -1,5 +1,6 @@
 .board {
   text-align: center;
+  position: relative;
 
   .board-tiles {
     max-width: $tile-width * 6;

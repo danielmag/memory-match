@@ -4,11 +4,16 @@
   background: none;
 }
 
-@mixin default-button {
+@mixin base-button {
   border: 0;
   padding: 5px 15px;
   font-size: 1rem;
   font-weight: $font-weight-bold;
-  background-color: $green;
   color: $white;
+}
+
+@mixin default-button {
+  @include base-button;
+  
+  background-color: $green;
 }
