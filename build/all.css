@@ -81,7 +81,8 @@ img {
   transition: transform 0.3s linear;
   transition: transform 0.3s linear, -webkit-transform 0.3s linear;
   -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d; }
+          transform-style: preserve-3d;
+  cursor: pointer; }
 
 .tile-flipped {
   -webkit-transform: rotateY(0);

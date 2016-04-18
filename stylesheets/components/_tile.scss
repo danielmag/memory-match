@@ -1,12 +1,13 @@
 .tile {
   @include remove-button-styles;
   @include inline-block-middle;
-  
+
   width: $tile-width;
   height: $tile-width;
   transform: rotateY(180deg);
   transition: transform 0.3s linear;
   transform-style: preserve-3d;
+  cursor: pointer;
 }
 
 .tile-flipped {
