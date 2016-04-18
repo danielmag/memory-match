@@ -21,13 +21,13 @@ img {
   color: #fff;
   background-color: #7cb842;
   position: relative; }
-  .default-button-loading {
+  .default-button.is-loading {
     color: #7cb842; }
-    .default-button-loading:before {
+    .default-button.is-loading:before {
       content: 'Loading...';
       position: absolute;
       color: white; }
-  .default-button-hidden {
+  .default-button.is-hidden {
     display: none; }
 
 .twitter-button {
@@ -40,19 +40,19 @@ img {
 
 .game {
   text-align: center; }
-  .game-end {
+  .game-overlay {
     display: none;
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.3); }
-    .game-end::before {
+    .game-overlay::before {
       content: "";
       height: 100%;
       display: inline-block;
       vertical-align: middle; }
-    .game-end-visible {
+    .game-overlay.is-visible {
       display: block; }
   .game-actions {
     display: inline-block;
@@ -83,10 +83,9 @@ img {
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   cursor: pointer; }
-
-.tile-flipped {
-  -webkit-transform: rotateY(0);
-          transform: rotateY(0); }
+  .tile.is-flipped {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0); }
 
 .tile-face {
   position: absolute;

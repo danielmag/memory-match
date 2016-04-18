@@ -14,15 +14,32 @@
     <div class="game">
       <h1 class="game-title">Memory Match</h1>
       <h3 id="game-timer"></h3>
-      <button class="default-button" id="new-game" type="button" name="button">
+      <button class="default-button" id="new-game" type="button" name="new game">
         New Game
       </button>
 
       <section class="board">
-        <div class="game-end" id="game-end">
+        <div class="game-overlay" id="game-start">
           <div class="game-actions">
             <div class="game-action">
-              <a class="twitter-button" id="twitter-share" href="https://twitter.com/intent/tweet/?text=" target="_blank">
+              <button
+                class="default-button"
+                id="start-game"
+                type="button"
+                name="start">
+                Start game
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="game-overlay" id="game-end">
+          <div class="game-actions">
+            <div class="game-action">
+              <a
+                class="twitter-button"
+                id="twitter-share"
+                href="https://twitter.com/intent/tweet/?text="
+                target="_blank">
                 Share on Twitter
               </a>
             </div>
@@ -40,7 +57,9 @@
         <div class="tile-face tile-front-face">
         </div>
         <div class="tile-face tile-back-face">
-          <img src="https://i2.wp.com/codebits.eu/logos/defaultavatar.jpg" alt="back face" />
+          <img
+            src="https://i2.wp.com/codebits.eu/logos/defaultavatar.jpg"
+            alt="back face" />
         </div>
       </div>
     </div>

@@ -4,18 +4,20 @@ function createBoard(data) {
   var template = document.getElementById('tile-template'),
       tilesContainer = document.getElementById('tiles'),
       gameTimer = document.getElementById('game-timer'),
+      gameStartScreen = document.getElementById('game-start'),
       gameEndScreen = document.getElementById('game-end'),
       newGameButton = document.getElementById('new-game'),
+      startGameButton = document.getElementById('start-game'),
       twitterShare = document.getElementById('twitter-share'),
       shareLinkMessage = 'Memory JavaScript FTW em: ';
 
   ClassUtils.addClass(newGameButton, 'is-hidden');
 
   var initTimer = function() {
+    gameTimer.innerHTML = TimeUtils.millisToMmAndSs(0);
     var timer = new Timer(function(time) {
       gameTimer.innerHTML = TimeUtils.millisToMmAndSs(time);
     });
-    timer.start();
     return timer
   }
 
@@ -29,6 +31,11 @@ function createBoard(data) {
 
   var timer = initTimer();
   var board = initBoard();
+
+  startGameButton.addEventListener('click', function() {
+    ClassUtils.removeClass(gameStartScreen, 'is-visible');
+    timer.start();
+  });
 
   var applyTemplate = function(template, src, alt) {
     var newTile = template.cloneNode(true);
@@ -75,6 +82,7 @@ function createBoard(data) {
       setTileCallbacks(rawTile.tile, domTile);
       domTile.addEventListener('click', handleClick.bind(null, rawTile.tile));
     });
+    ClassUtils.addClass(gameStartScreen, 'is-visible');
   }
 
   build();
