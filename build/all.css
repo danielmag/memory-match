@@ -71,6 +71,8 @@ img {
   padding: 0;
   border: 0;
   background: none;
+  display: inline-block;
+  vertical-align: middle;
   width: 6rem;
   height: 6rem;
   -webkit-transform: rotateY(180deg);
