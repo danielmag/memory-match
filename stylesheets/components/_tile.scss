@@ -8,10 +8,10 @@
   transition: transform 0.3s linear;
   transform-style: preserve-3d;
   cursor: pointer;
-}
 
-.tile-flipped {
-  transform: rotateY(0);
+  &.is-flipped {
+    transform: rotateY(0);
+  }
 }
 
 .tile-face {

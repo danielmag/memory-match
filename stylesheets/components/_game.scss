@@ -15,7 +15,7 @@
       @include inline-block-middle;
     }
 
-    &-visible {
+    &.is-visible {
       display: block;
     }
   }

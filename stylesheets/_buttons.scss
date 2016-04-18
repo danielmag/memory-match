@@ -2,7 +2,7 @@
   @include default-button;
   position: relative;
 
-  &-loading {
+  &.is-loading {
     color: $green;
 
     &:before {
@@ -12,7 +12,7 @@
     }
   }
 
-  &-hidden {
+  &.is-hidden {
     display: none;
   }
 }
